@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Moura Semi joias e acessórios - Transforme seu visual com nossas peças exclusivas e elegantes.">
+    <meta name="keywords" content="semi joias, acessórios, joias, bijuterias, moda, luxo, elegância">
+    <meta property="og:title" content="Moura Semi joias e acessórios">
+    <meta property="og:description" content="Transforme seu visual com nossas peças exclusivas e elegantes.">
+    <meta property="og:type" content="website">
+    <title>Moura Semijoias e acessórios</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Reset e estilos globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: #333333;
+            background-color: #FFFFFF;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: #D4AF37;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #F5DEB3;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #D4AF37;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666666;
+            margin-top: 1rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D4AF37;
+        }
+
+        .mobile-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Home Section */
+        .home {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide-item.active {
+            opacity: 1;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .button-group {
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #D4AF37;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #B8860B;
+            transform: translateY(-2px);
+        }
+
+        .btn-large {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 3;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #D4AF37;
+        }
+
+        .slider-controls button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slider-controls button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            background: #F5F5F5;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: #D4AF37;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-text {
+            color: #666666;
+        }
+
+        /* Products Section */
+        .products {
+            background: white;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #D4AF37;
+            background: transparent;
+            color: #D4AF37;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-tab.active,
+        .category-tab:hover {
+            background: #D4AF37;
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-button {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .card-button:hover {
+            background: #128C7E;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: #666666;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #F5F5F5;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            text-align: center;
+            color: white;
+        }
+
+        /* Address Section */
+        .address {
+            background: white;
+        }
+
+        .address-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .address-info {
+            padding: 2rem;
+        }
+
+        .address-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #D4AF37;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            color: #D4AF37;
+            font-size: 1.2rem;
+        }
+
+        .business-hours {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #F5F5F5;
+            border-radius: 10px;
+        }
+
+        .hours-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: #D4AF37;
+        }
+
+        .hours-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .address-map {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .address-map iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #F5F5F5;
+        }
+
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #D4AF37;
+        }
+
+        .info-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #D4AF37;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #B8860B;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #121212;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: #D4AF37;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            color: #D4AF37;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-sub-text {
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        .footer-nav {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-nav a {
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #D4AF37;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: #D4AF37;
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-icon {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .about-wrapper,
+            .address-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-button {
+                bottom: 1rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-wrapper">
+            <div class="logo">
+                <img src="public/assets/logo.png" alt="Logo Moura">
+            </div>
+            
+            <div class="mobile-icon" id="mobileIcon">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Quem Somos</a></li>
+                <li><a href="#products">Produtos</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#address">Endereço</a></li>
+                <li><a href="#contact">Seja Revendedora</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="slider-container">
+            <div class="slide-item active" style="background-image: url('public/assets/Moura31.webp')"></div>
+            <div class="slide-item" style="background-image: url('public/assets/Moura32.webp')"></div>
+            <div class="slide-item" style="background-image: url('public/assets/Mouraf4.webp')"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Moura Semijoias</h1>
+            <div class="button-group">
+                <a href="#" class="btn btn-primary btn-large" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Seja um(a) revendedor(a)
+                </a>
+            </div>
+            <p class="hero-subtitle">
+                Semijoias exclusivas e de alta qualidade que valorizam a sua beleza natural
+            </p>
+        </div>
+        
+        <div class="slider-controls">
+            <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider-dots">
+                <span class="slider-dot active" onclick="goToSlide(0)"></span>
+                <span class="slider-dot" onclick="goToSlide(1)"></span>
+                <span class="slider-dot" onclick="goToSlide(2)"></span>
+            </div>
+            <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quem Somos</h2>
+                <p>Conheça nossa história e valores que nos diferenciam no mercado de semi joias</p>
+            </div>
+            
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <img src="public/assets/joia01.jpg" alt="Moura Semi joias - Nossa História">
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            A <strong>Moura Semijoias</strong> nasceu da paixão por peças elegantes e acessíveis. Trabalhamos para oferecer semi joias que combinam qualidade e beleza a preços justos.
+                            Existimos para transformar a vida de mulheres empreendedoras por meio de semijoias que elevam a autoestima, geram renda e fortalecem conexões reais.
+                        </p>
+                        <p>
+                            Oferecemos peças de alto padrão no atacado com suporte próximo e humanizado, promovendo autonomia e crescimento das nossas parceiras. Nosso compromisso é entregar qualidade, beleza e sofisticação com propósito.
+                        </p>
+                        <p>
+                            Somos movidos por valores como empatia, confiança, inovação com inteligência digital e responsabilidade social. Nossa visão é ser a marca mais admirada do Nordeste por unir relacionamento, tecnologia e impacto positivo.
+                        </p>
+                    </div>
+                    
+                    <div class="values">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h3 class="value-title">Qualidade</h3>
+                            <p class="value-text">Peças selecionadas e duráveis</p>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h3 class="value-title">Sofisticação</h3>
+                            <p class="value-text">Design exclusivo e elegante</p>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 class="value-title">Compromisso</h3>
+                            <p class="value-text">Atendimento personalizado</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-cta">
+                        <a href="#" class="btn btn-primary" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Saiba mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Produtos</h2>
+                <p>Conheça nossas peças exclusivas e de alta qualidade</p>
+            </div>
+            
+            <div class="category-tabs">
+                <button class="category-tab active" onclick="filterProducts('todos')">Todos</button>
+                <button class="category-tab" onclick="filterProducts('colares')">Colares</button>
+                <button class="category-tab" onclick="filterProducts('brincos')">Brincos</button>
+                <button class="category-tab" onclick="filterProducts('pulseiras')">Pulseiras</button>
+                <button class="category-tab" onclick="filterProducts('aneis')">Anéis</button>
+                <button class="category-tab" onclick="filterProducts('conjuntos')">Conjuntos</button>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeria</h2>
+                <p>Conheça nossas coleções e inspirações</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="public/assets/conjunto12.jpg" alt="Conjunto" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3></h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="public/assets/colar07.jpg" alt="Colar" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3></h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="public/assets/conjunto01.jpg" alt="Conjunto" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3></h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Address Section -->
+    <section class="address" id="address">
+        <div class="container">
+            <div class="section-title">
+                <h2>Endereço</h2>
+                <p>Visite nossa loja física ou entre em contato conosco</p>
+            </div>
+            
+            <div class="address-wrapper">
+                <div class="address-info">
+                    <h3 class="address-title">Nossa Localização</h3>
+                    <p class="address-text">
+                        Estamos localizados em uma área de fácil acesso, com estacionamento próximo e diversas opções de transporte público.
+                    </p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Galeria 55 RUA SÃO PAULO, Sala 16 (térreo) - Maceió/AL</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(82) 996256321</span>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <div class="hours-title">
+                            <i class="fas fa-clock"></i>
+                            <span>Horário de Funcionamento</span>
+                        </div>
+                        
+                        <div class="hours-item">
+                            <strong>Segunda a Sexta:</strong> 8h às 16h
+                        </div>
+                        <div class="hours-item">
+                            <strong>Sábado:</strong> 8h às 12h
+                        </div>
+                        <div class="hours-item">
+                            <strong>Domingo e Feriados:</strong> Fechado
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary" onclick="openWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Agendar Visita
+                    </a>
+                </div>
+                
+                <div class="address-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3934.206953907158!2d-35.773221899999996!3d-9.577421300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7014859de41344f%3A0xdcfd39ca0af404b2!2sR.%20S%C3%A3o%20Paulo%2C%2055%20-%20Tabuleiro%20do%20Martins%2C%20Macei%C3%B3%20-%20AL%2C%2057061-130!5e0!3m2!1spt-BR!2sbr!4v1747253045554!5m2!1spt-BR!2sbr"
+                        allowfullscreen 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localização Moura Semi joias">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como ser Revendedora</h2>
+                <p>Entre em contato conosco para tirar dúvidas, fazer pedidos ou agendar uma visita</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3 class="info-title">Seja Revendedora</h3>
+                    <p class="info-text">
+                        <strong>Brilhe com propósito, cresça com a MOURA.</strong>
+                    </p>
+                    <p class="info-text">
+                        Preencha o formulário através do botão abaixo:
+                    </p>
+                    
+                    <div class="social-links">
+                        <a href="https://forms.gle/doFmdpHth21E3QsbA" target="_blank" rel="noopener noreferrer" class="social-link" title="Seja Revendedora">
+                            <i class="fas fa-user-tie"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-text">Moura</div>
+                        <div class="logo-sub-text">Semi joias e acessórios</div>
+                    </div>
+                    <p>Transforme seu visual com nossas semi joias exclusivas e elegantes.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/mourasemijoias.com.br/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mourasemijoias.com.br/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Quem Somos</a></li>
+                        <li><a href="#products">Produtos</a></li>
+                        <li><a href="#gallery">Galeria</a></li>
+                        <li><a href="https://forms.gle/doFmdpHth21E3QsbA" target="_blank" rel="noopener noreferrer">Seja Revendedora</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p><strong>Endereço:</strong> Galeria 55 RUA SAO PAULO, Sala 16 (térreo) - Maceió/AL</p>
+                    <p><strong>Telefone:</strong> +55 82 996256321</p>
+                    <p><strong>Horário:</strong> Seg a Sex: 8h às 18h | Sáb: 8h às 13h</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 Moura Semi joias e acessórios. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-button" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <script>
+        // Dados dos produtos
+        const productData = [
+            {
+                id: 1,
+                title: 'Colar Delicado',
+                description: '',
+                price: '89,90',
+                category: 'colares',
+                image: 'public/assets/colar01.jpg'
+            },
+            {
+                id: 2,
+                title: 'Brinco em Flor',
+                description: '',
+                price: '69,90',
+                category: 'brincos',
+                image: 'public/assets/brincos01.jpg'
+            },
+            {
+                id: 3,
+                title: 'Pulseira delicada',
+                description: '',
+                price: '79,90',
+                category: 'pulseiras',
+                image: 'public/assets/pulseira01.jpg'
+            },
+            {
+                id: 4,
+                title: 'Anel Solitário',
+                description: 'Em breve mais variações',
+                price: '109,90',
+                category: 'aneis',
+                image: 'https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+            },
+            {
+                id: 5,
+                title: 'Colar em Coração',
+                description: '',
+                price: '99,90',
+                category: 'colares',
+                image: 'public/assets/colar02.jpg'
+            },
+            {
+                id: 6,
+                title: 'Brinco Coração com Pedra',
+                description: '',
+                price: '119,90',
+                category: 'brincos',
+                image: 'public/assets/brincos03.jpg'
+            },
+            {
+                id: 7,
+                title: 'Conjunto em Flores',
+                description: '',
+                price: '199,90',
+                category: 'conjuntos',
+                image: 'public/assets/conjunto02.jpg'
+            },
+            {
+                id: 8,
+                title: 'Conjunto em Pérolas',
+                description: '',
+                price: '59,90',
+                category: 'conjuntos',
+                image: 'public/assets/conjunto03.jpg'
+            },
+            {
+                id: 9,
+                title: 'Pulseira Delicada',
+                description: '',
+                price: '59,90',
+                category: 'pulseiras',
+                image: 'public/assets/pulseira03.jpg'
+            }
+        ];
+
+        // Variáveis globais
+        let currentSlide = 0;
+        let currentCategory = 'todos';
+        const slides = document.querySelectorAll('.slide-item');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileIcon = document.getElementById('mobileIcon');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileIcon.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileIcon.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Slider functions
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+
+        // Auto-slide
+        setInterval(nextSlide, 5000);
+
+        // Product filtering
+        function filterProducts(category) {
+            currentCategory = category;
+            
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter products
+            const filteredProducts = category === 'todos' 
+                ? productData 
+                : productData.filter(product => product.category === category);
+            
+            displayProducts(filteredProducts);
+        }
+
+        function displayProducts(products) {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" class="card-image">
+                    <div class="card-overlay">
+                        <button class="card-button" onclick="openWhatsAppProduct('${product.title}')">
+                            <i class="fab fa-whatsapp"></i> Comprar
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">${product.title}</h3>
+                        <p class="card-description">${product.description}</p>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        // WhatsApp functions
+        function openWhatsApp() {
+            const phoneNumber = '5582996256321';
+            const message = 'Olá! Visitei seu site e gostaria de saber mais sobre as semijoias e como ser revendedor(a)!';
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function openWhatsAppProduct(productTitle) {
+            const phoneNumber = '5582996256321';
+            const message = `Olá! Gostaria de saber mais sobre o produto: ${productTitle}`;
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Initialize products on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProducts(productData);
+        });
+    </script>
+</body>
+</html>
